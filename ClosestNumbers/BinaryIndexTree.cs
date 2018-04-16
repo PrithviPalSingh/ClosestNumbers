@@ -104,6 +104,12 @@ namespace ClosestNumbers
             return invcount;
         }
 
+        /// <summary>
+        /// http://pavelsimo.blogspot.sg/2012/09/counting-inversions-in-array-using-BIT.html
+        /// </summary>
+        /// <param name="arr"></param>
+        /// <param name="n"></param>
+        /// <returns></returns>
         public long getInvCountModified(long[] arr, long n)
         {
             long invcount = 0; // Initialize result
