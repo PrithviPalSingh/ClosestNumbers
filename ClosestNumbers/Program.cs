@@ -11,7 +11,7 @@ namespace ClosestNumbers
         static void Main(string[] args)
         {
             //int n = Convert.ToInt32(Console.ReadLine());
-            string[] arr_temp = Console.ReadLine().Split(' ');
+            //string[] arr_temp = Console.ReadLine().Split(' ');
             //int[] arr = Array.ConvertAll(arr_temp, Int32.Parse);
             //int[] result = closestNumbers(arr);
             //Console.WriteLine(String.Join(" ", result));
@@ -21,9 +21,9 @@ namespace ClosestNumbers
             BinaryIndexTree bitree = new BinaryIndexTree();
             long[] freq = { 2, 1, 3, 1, 2 };//// { 2, 1, 1, 3, 2, 3, 4, 5, 6, 7, 8, 9 };
             long n = freq.Length;
-            Console.WriteLine(bitree.getInvCount(freq, n));
+            //Console.WriteLine(bitree.getInvCount(freq, n));
+            Console.WriteLine(bitree.getInvCountModified(freq, n));
             //Console.WriteLine(bitree.getSum(BITree, 3));
-            Array.ConvertAll(arr_temp, long.Parse);
 
             //// Let use test the update operation
             //freq[3] += 6;

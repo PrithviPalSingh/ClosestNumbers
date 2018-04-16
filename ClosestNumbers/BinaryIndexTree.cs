@@ -103,5 +103,63 @@ namespace ClosestNumbers
 
             return invcount;
         }
+
+        public long getInvCountModified(long[] arr, long n)
+        {
+            long invcount = 0; // Initialize result
+
+            // Convert arr[] to an array with values from 1 to n and
+            // relative order of smaller and greater elements remains
+            // same.  For example, {7, -90, 100, 1} is converted to
+            //  {3, 1, 4 ,2 }
+            convert(arr, n);
+
+            // Create a BIT with size equal to maxElement+1 (Extra
+            // one is used so that elements can be directly be
+            // used as index)
+            long[] BIT = new long[n + 1];
+            for (long i = 1; i <= n; i++)
+                BIT[i] = 0;
+
+            // Traverse all elements from right.
+            for (long i = n - 1; i >= 0; i--)
+            {
+                // Get count of elements smaller than arr[i]
+                invcount += getSum(BIT, arr[i] - 1);
+
+                // Add current element to BIT
+                updateBIT(BIT, n, arr[i], 1);
+            }
+
+            return invcount;
+        }
+
+
+        // Converts an array to an array with values from 1 to n
+        // and relative order of smaller and greater elements remains
+        // same.  For example, {7, -90, 100, 1} is converted to
+        // {3, 1, 4 ,2 }
+        private void convert(long[] arr, long n)
+        {
+            // Create a copy of arrp[] in temp and sort the temp array
+            // in increasing order
+            long[] temp = new long[n];
+            for (long i = 0; i < n; i++)
+                temp[i] = arr[i];
+
+            //sort(temp, temp + n);
+            Array.Sort(temp);
+
+            // Traverse all array elements
+            for (long i = 0; i < n; i++)
+            {
+                // lower_bound() Returns pointer to the first element
+                // greater than or equal to arr[i]
+                var search = Array.BinarySearch(temp, arr[i]);
+                arr[i] = search + 1;
+            }
+            Console.WriteLine();
+        }
+
     }
 }
